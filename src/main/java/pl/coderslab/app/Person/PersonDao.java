@@ -2,6 +2,8 @@ package pl.coderslab.app.Person;
 
 import pl.coderslab.app.Publisher.Publisher;
 
+import java.util.List;
+
 public interface PersonDao {
 
     void savePerson(Person person);
@@ -10,4 +12,6 @@ public interface PersonDao {
     void update(Person person);
 
     void delete(long id);
+
+    public List<Person> findAll();
 }

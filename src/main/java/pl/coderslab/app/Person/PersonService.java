@@ -1,5 +1,7 @@
 package pl.coderslab.app.Person;
 
+import java.util.List;
+
 public interface PersonService {
 
     void savePerson(Person person);
@@ -9,5 +11,8 @@ public interface PersonService {
     void update(Person person);
 
     void delete(long id);
+
+    public List<Person> findAll();
+
 
 }

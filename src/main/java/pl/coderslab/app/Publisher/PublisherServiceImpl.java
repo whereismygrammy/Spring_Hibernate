@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -30,5 +31,10 @@ public class PublisherServiceImpl implements PublisherService {
     @Override
     public void delete(long id) {
         publisherDao.delete(id);
+    }
+
+    @Override
+    public List<Publisher> findAll() {
+        return publisherDao.findAll();
     }
 }

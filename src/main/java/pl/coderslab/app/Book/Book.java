@@ -16,7 +16,7 @@ public class Book {
     private long id;
     private String title;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Author> authors = new ArrayList<>();
 
     private Integer rating;

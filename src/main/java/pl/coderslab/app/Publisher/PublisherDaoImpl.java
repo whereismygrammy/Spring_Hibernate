@@ -1,9 +1,12 @@
 package pl.coderslab.app.Publisher;
 
 import org.springframework.stereotype.Repository;
+import pl.coderslab.app.Author.Author;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 @Repository
 public class PublisherDaoImpl implements PublisherDao {
@@ -32,5 +35,11 @@ public class PublisherDaoImpl implements PublisherDao {
         Publisher publisher = findById(id);
         entityManager.remove(publisher);
 
+    }
+
+    @Override
+    public List<Publisher> findAll() {
+        Query query = entityManager.createQuery("select A from Person p");
+        return query.getResultList();
     }
 }

@@ -1,5 +1,9 @@
 package pl.coderslab.app.Publisher;
 
+import pl.coderslab.app.Author.Author;
+
+import java.util.List;
+
 public interface PublisherDao {
 
     void savePublisher(Publisher publisher);
@@ -9,4 +13,7 @@ public interface PublisherDao {
     void update(Publisher publisher);
 
     void delete(long id);
+
+    List<Publisher> findAll();
+
 }

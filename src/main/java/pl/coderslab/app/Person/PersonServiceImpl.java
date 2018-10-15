@@ -1,6 +1,7 @@
 package pl.coderslab.app.Person;
 
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 public class PersonServiceImpl implements PersonService {
 
@@ -26,5 +27,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void delete(long id) {
         personDao.delete(id);
+    }
+
+    @Override
+    public List<Person> findAll() {
+        return personDao.findAll();
     }
 }

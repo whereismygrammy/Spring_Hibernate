@@ -37,6 +37,12 @@ public class BookController {
         Book book = new Book();
         book.setTitle("Tytul");
 
+        Book book2 = new Book();
+        book.setTitle("Tytul2");
+
+        Book book3 = new Book();
+        book.setTitle("Tytul3");
+
         book.setDescription("Opis");
         Publisher publisher = new Publisher();
         publisher.setName("Publisher name");
@@ -59,8 +65,13 @@ public class BookController {
         book.getAuthors().add(author);
         book.getAuthors().add(author2);
 
+        book.setRating(5);
+        book2.setRating(10);
+        book3.setRating(8);
 
         bookService.saveBook(book);
+        bookService.saveBook(book2);
+        bookService.saveBook(book3);
         return "Dodawanie ksiazek";
     }
 
@@ -96,6 +107,19 @@ public class BookController {
     @ResponseBody
     public String findAll() {
         List<Book> books = bookService.findAll();
+        StringBuilder sb = new StringBuilder();
+
+        for (Book b : books) {
+            System.out.println(b);
+            sb.append(b.toString()).append("<br>");
+        }
+        return sb.toString();
+    }
+
+    @GetMapping("/rating/{id}")
+    @ResponseBody
+    public String ratingList(@PathVariable int id) {
+        List<Book> books = bookService.getRatingList(id);
         StringBuilder sb = new StringBuilder();
 
         for (Book b : books) {

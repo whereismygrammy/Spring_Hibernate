@@ -1,5 +1,7 @@
 package pl.coderslab.app.Publisher;
 
+import java.util.List;
+
 public interface PublisherService {
 
     void savePublisher(Publisher publisher);
@@ -9,4 +11,7 @@ public interface PublisherService {
     void update(Publisher publisher);
 
     void delete(long id);
+
+    List<Publisher> findAll();
+
 }

@@ -8,7 +8,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class BookDaoImpl implements BookDao  {
+public class BookDaoImpl implements BookDao {
 
     @PersistenceContext
     EntityManager entityManager;
@@ -42,7 +42,8 @@ public class BookDaoImpl implements BookDao  {
 
     @Override
     public List<Book> getRatingList(int rating) {
-        Query query = entityManager.createQuery("select b from Book b where ");
+        Query query = entityManager.createQuery("select b from Book b where rating > :rating");
+        query.setParameter("rating", rating);
         return query.getResultList();
     }
 }

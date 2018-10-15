@@ -1,5 +1,7 @@
 package pl.coderslab.app.Author;
 
+import java.util.List;
+
 public interface AuthorService {
     void saveAutor(Author author);
 
@@ -8,5 +10,7 @@ public interface AuthorService {
     void update(Author author);
 
     void delete(long id);
+
+    List<Author> findAll();
 
 }
