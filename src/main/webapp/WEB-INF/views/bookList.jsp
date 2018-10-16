@@ -27,7 +27,7 @@
 <table>
     <tr>
         <th>Tytuł</th>
-        <th>Autor (teraz title)</th>
+        <th>Autor (teraz title - jak wielu autorow rovic ?)</th>
         <th>Ocena</th>
         <th>Wydawca</th>
         <th>Usuń</th>

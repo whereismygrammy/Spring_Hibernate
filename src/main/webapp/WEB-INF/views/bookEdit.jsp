@@ -22,7 +22,9 @@
     Title : <br><form:input type="text" path="title"/><br>
     Rating : <br><form:input type="text" path="rating"/><br>
     Description : <br><form:textarea type="text" path="description"/><br>
-    Publisher: <br><form:select path="publisher.id" items="${publishers}" itemLabel="name" itemValue="id"></form:select>
+    Publisher: <br><form:select path="publisher.id" items="${publishers}" itemLabel="name" itemValue="id"></form:select></br>
+    Authors: <br><form:select path="authors" items="${authors}" itemLabel="name" itemValue="id"
+                              multiple="false"> </form:select><br>
     <input type="submit">
 
 </form:form>

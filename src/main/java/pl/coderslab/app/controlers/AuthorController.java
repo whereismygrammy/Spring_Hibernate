@@ -37,6 +37,12 @@ public class AuthorController {
         return "authorList";
     }
 
+    @GetMapping("/find/{id}")
+    @ResponseBody
+    public String find(@PathVariable long id) {
+        Author author = authorService.findById(id);
+        return author.toString();
+    }
 
     @GetMapping("/add")
     public String addAuthor(Model model) {
@@ -72,13 +78,5 @@ public class AuthorController {
         return "redirect:../list";
     }
 
-
-    @GetMapping("/find/{id}")
-    @ResponseBody
-    public String find(@PathVariable long id) {
-        Author author = authorService.findById(id);
-        return author.toString();
-
-    }
 
 }
