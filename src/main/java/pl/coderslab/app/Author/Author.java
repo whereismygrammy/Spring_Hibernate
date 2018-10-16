@@ -16,6 +16,12 @@ public class Author {
     private String firstName;
     private String lastName;
 
+    @Transient
+    private String name;
+
+    public String getName() {
+        return firstName + " " + lastName;
+    }
 
     @ManyToMany (mappedBy = "authors")
     private List<Book> books = new ArrayList<>();
@@ -30,6 +36,18 @@ public class Author {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public String getFirstName() {

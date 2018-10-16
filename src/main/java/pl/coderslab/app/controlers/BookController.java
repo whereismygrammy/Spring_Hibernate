@@ -91,6 +91,7 @@ public class BookController {
         return book1.toString();
     }
 
+
     @GetMapping("/delete/{id}")
     @ResponseBody
     public String delete(@PathVariable long id) {
@@ -98,20 +99,7 @@ public class BookController {
             return "Nie ma takiej ksiażki";
         }
         bookService.delete(id);
-        return "Usunieto książkę";
-    }
-
-    @GetMapping("/list")
-    @ResponseBody
-    public String findAll() {
-        List<Book> books = bookService.findAll();
-        StringBuilder sb = new StringBuilder();
-
-        for (Book b : books) {
-            System.out.println(b);
-            sb.append(b.toString()).append("<br>");
-        }
-        return sb.toString();
+        return "Usunieto ksiazke <a href='/books/list'>Wroc do listy</a>";
     }
 
     @GetMapping("/rating/{id}")
@@ -127,11 +115,21 @@ public class BookController {
         return sb.toString();
     }
 
-    ///// 2 dzien=//////////////////////////////////////////////////////////////////////////
+    ///// 2 dzien /////
 
     @ModelAttribute("publishers")
     public List<Publisher> getPublishers() {
         return publisherService.findAll();
+    }
+
+    @ModelAttribute("books")
+    public List<Book> getBooks() {
+        return bookService.findAll();
+    }
+
+    @ModelAttribute("authors")
+    public List<Author> getAuthors() {
+        return authorService.findAll();
     }
 
     @GetMapping("/add")
@@ -141,10 +139,28 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    @ResponseBody
     public String addBook(@ModelAttribute Book book) {
         bookService.saveBook(book);
-        return "Book saved " + book.getTitle();
+        return "redirect:list";
+    }
+
+    @GetMapping("/list")
+    public String findAll() {
+        return "bookList";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable long id, Model model) {
+        Book book = bookService.findById(id);
+        model.addAttribute("bookToEdit", book);
+        return "bookEdit";
+    }
+
+    @PostMapping("/edit/{id}")
+    @ResponseBody
+    public String edit(@ModelAttribute Book bookToEdit) {
+        bookService.update(bookToEdit);
+        return "<a href = '/books/list'>Wroc do listy </a>";
     }
 
 }
