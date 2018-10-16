@@ -19,6 +19,18 @@ public class Person {
             CascadeType.ALL)
     private PersonDetails personDetails;
 
+
+    public Person() {
+    }
+
+    public Person(String login, String password, String email) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
+
+
     public long getId() {
         return id;
     }

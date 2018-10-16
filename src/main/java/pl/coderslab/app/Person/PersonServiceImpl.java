@@ -1,17 +1,21 @@
 package pl.coderslab.app.Person;
 
-import javax.persistence.PersistenceContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
 public class PersonServiceImpl implements PersonService {
 
-    @PersistenceContext
+    @Autowired
     PersonDao personDao;
 
     @Override
     public void savePerson(Person person) {
         personDao.savePerson(person);
-
     }
 
     @Override

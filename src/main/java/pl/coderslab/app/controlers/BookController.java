@@ -2,10 +2,8 @@ package pl.coderslab.app.controlers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.app.Author.Author;
 import pl.coderslab.app.Author.AuthorService;
 import pl.coderslab.app.Book.Book;
@@ -128,4 +126,25 @@ public class BookController {
         }
         return sb.toString();
     }
+
+    ///// 2 dzien=//////////////////////////////////////////////////////////////////////////
+
+    @ModelAttribute("publishers")
+    public List<Publisher> getPublishers() {
+        return publisherService.findAll();
+    }
+
+    @GetMapping("/add")
+    public String addBook(Model model) {
+        model.addAttribute("book", new Book());
+        return "book";
+    }
+
+    @PostMapping("/add")
+    @ResponseBody
+    public String addBook(@ModelAttribute Book book) {
+        bookService.saveBook(book);
+        return "Book saved " + book.getTitle();
+    }
+
 }

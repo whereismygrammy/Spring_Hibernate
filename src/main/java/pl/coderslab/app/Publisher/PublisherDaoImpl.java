@@ -39,7 +39,7 @@ public class PublisherDaoImpl implements PublisherDao {
 
     @Override
     public List<Publisher> findAll() {
-        Query query = entityManager.createQuery("select A from Person p");
+        Query query = entityManager.createQuery("select p from Publisher p");
         return query.getResultList();
     }
 }
