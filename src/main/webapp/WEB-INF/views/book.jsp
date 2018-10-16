@@ -9,6 +9,8 @@
 
 Book TEST<br>
 
+
+
 <form:form method="post" modelAttribute="book">
 
     Title : <br><form:input type="text" path="title"/><br>
@@ -21,6 +23,8 @@ Book TEST<br>
     <input type="submit">
 
 </form:form>
+
+
 
 </body>
 </html>

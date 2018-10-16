@@ -19,15 +19,21 @@
 <b>Lista książek</b>
 </br>
 
+<a href="/books/add">Dodaj ksiazke</a>
+
+</br>
+
+
 <table>
     <tr>
-    <th>Tytuł</th>
-    <th>Autor (teraz title)</th>
-    <th>Ocena</th>
-    <th>Wydawca</th>
-    <th>Usuń</th>
-    <th>Edytuj</th>
+        <th>Tytuł</th>
+        <th>Autor (teraz title)</th>
+        <th>Ocena</th>
+        <th>Wydawca</th>
+        <th>Usuń</th>
+        <th>Edytuj</th>
     </tr>
+
 
     <c:forEach items="${books}" var="book">
         <tr>
@@ -46,8 +52,6 @@
     </c:forEach>
 
 </table>
-
-
 
 
 </body>
